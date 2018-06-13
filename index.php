@@ -57,7 +57,13 @@ switch ($_SERVER['REDIRECT_URL']){
     case '/book':
     case '/book/':
         $template='book';
-        $page_title='MyTicket | Book';
+        $page_title='MyTicket | Book Train';
+        break;
+        
+    case '/book-flight':
+    case '/book-flight/':
+        $template='book-flight';
+        $page_title='MyTicket | Book Flight';
         break;
     
     default:
