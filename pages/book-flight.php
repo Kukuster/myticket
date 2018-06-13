@@ -60,7 +60,7 @@ get_template_part('header');
 
           <div class="content">
             <div class="tab-content" id="Flight">
-              <form id="form_5" action="/book/" class="form_5" method="get">
+              <form id="form_5" action="/book-flight/" class="form_5" method="get">
                 <div>
                   <div class="pad">
                     <div class="wrapper under">
