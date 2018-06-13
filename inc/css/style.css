@@ -963,7 +963,8 @@ a.jqTransformSelectOpen {
 }
 .form_5 .cols .left {
 	width:49px;
-	padding-left:9px
+	padding-left:9px;
+	padding-right: 10px;
 }
 .form_5 .cols .select1 {
 	height:25px
