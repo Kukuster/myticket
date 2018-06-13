@@ -1,0 +1,16 @@
+.log/
+.logs/
+.idea/
+~logs/
+logs
+.htaccess
+.DS_Store
+robots.txt
+sitemap.xml
+sitemap.xml.gz
+.directory
+node_modules
+node_modules/
+README.md
+
+config.php

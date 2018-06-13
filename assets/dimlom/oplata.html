@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pay</title>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	.content{
+		margin-top: 50px;
+	}
+	.card-wrapper{
+		margin-bottom: 20px;
+	}
+	</style>
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<div class="container content">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-4">
+					<div class="card-wrapper"></div>
+				</div>
+			</div>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label for="number" class="col-sm-4 control-label">Card Number</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="number" placeholder="Card Number" name="number">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-4 control-label">Full Name</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="name" placeholder="Full Name" name="name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-4 control-label">Passport ID</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="passpoptId" placeholder="Full Name" name="name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="month" class="col-sm-4 control-label">Month and Year</label>
+					<div class="col-sm-8">
+						<select name="Month" id="idMonth" class="col-sm-4 control-label"></select>
+						<select name="Year" id="idYear" class="col-sm-4 control-label"></select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="cvc" class="col-sm-4 control-label">CVC</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="cvc" placeholder="CVC" name="cvc">
+					</div>
+				</div>
+				<div class="form-group" style="float: right;margin-right: 2px">
+					<button type="button" class="btn btn-success">Pay now</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/jquery.card.js"></script>
+<script src="js/card.js"> </script>
+
+<script>
+$(function(){
+	$('form').card({
+		container: '.card-wrapper'
+	});
+});
+</script>
+
+</body>
+</html>
