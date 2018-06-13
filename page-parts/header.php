@@ -22,6 +22,7 @@ switch ($template){
     case 'home':
         $body_id='page1'; break;
     case 'book':
+    case 'book-flight':
         $body_id='page3'; break;
     case 'contacts':
         $body_id='page6'; break;
@@ -51,8 +52,8 @@ switch ($template){
     </div>
     <nav>
       <ul id="menu">
-        <li <?php if ($template == 'about-us'){ ?> id="menu_active"<?php } ?>><a href="/about-us"><span><span>About</span></span></a></li>
-        <li <?php if ($template == 'book'){ ?> id="menu_active"<?php } ?>><a href="/book"><span><span>Book</span></span></a></li>
+        <li <?php if ($template == 'book'){ ?> id="menu_active"<?php } ?>><a href="/book"><span><span>Train</span></span></a></li>
+        <li <?php if ($template == 'book-flight'){ ?> id="menu_active"<?php } ?>><a href="/book-flight"><span><span>Plain</span></span></a></li>
         <li <?php if ($template == 'contacts'){ ?> id="menu_active"<?php } ?> class="end"><a href="/contacts"><span><span>Contacts</span></span></a></li>
       </ul>
     </nav>
