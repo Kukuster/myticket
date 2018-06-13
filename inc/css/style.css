@@ -14,7 +14,6 @@ mark, rp, rt, ruby, summary, time {
 	float:right
 }
 .wrapper {
-	width:100%;
 	overflow:hidden
 }
 .relative {
@@ -99,7 +98,7 @@ h3 {
 	line-height:1.2em;
 	margin-top:-4px;
 	letter-spacing:-1px;
-	padding:0 0 21px 0
+	padding:0 0 21px 40px;
 }
 h3 span {
 	font-size:20px;
@@ -138,7 +137,8 @@ header {
 	color:#fff;
 	float:left;
 	padding:95px 0 0 18px;
-	letter-spacing:-1px
+	letter-spacing:-1px;
+	display: flex;
 }
 #top_nav {
 	float:right;
@@ -148,7 +148,8 @@ header {
 	float:left;
 	padding-left:25px;
 	width:50px;
-	text-align:center
+	text-align:center;
+	list-style: none;
 }
 #top_nav li a {
 	display:inline-block;
