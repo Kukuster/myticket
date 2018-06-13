@@ -116,7 +116,7 @@ get_template_part('header');
                       <?php ///**/ ?>
                     </div>
                     <div class="wrapper under">
-                      <span class="left">Plains</span>
+                      <span class="left">Planes</span>
                       <div class="cols marg_right1">
                         <h6>Outbound flights</h6>
                         <?php /* ?>

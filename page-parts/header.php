@@ -6,10 +6,11 @@ global $template, $page_title;
 <head>
 <title><?php echo $page_title; ?></title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../inc/css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="../inc/css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="../inc/css/style.css" type="text/css" media="all">
-<?php if ($template == 'book'){ ?>
+<?php if ($template == 'book' || $template == 'book-flight' || $template == 'seat'){ ?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <?php } ?>
 <!--[if lt IE 9]>
@@ -20,6 +21,7 @@ global $template, $page_title;
 <?php 
 switch ($template){
     case 'home':
+    case 'seat':
         $body_id='page1'; break;
     case 'book':
     case 'book-flight':
@@ -53,7 +55,7 @@ switch ($template){
     <nav>
       <ul id="menu">
         <li <?php if ($template == 'book'){ ?> id="menu_active"<?php } ?>><a href="/book"><span><span>Train</span></span></a></li>
-        <li <?php if ($template == 'book-flight'){ ?> id="menu_active"<?php } ?>><a href="/book-flight"><span><span>Plain</span></span></a></li>
+        <li <?php if ($template == 'book-flight'){ ?> id="menu_active"<?php } ?>><a href="/book-flight"><span><span>Plane</span></span></a></li>
         <li <?php if ($template == 'contacts'){ ?> id="menu_active"<?php } ?> class="end"><a href="/contacts"><span><span>Contacts</span></span></a></li>
       </ul>
     </nav>
