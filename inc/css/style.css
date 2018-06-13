@@ -1065,6 +1065,8 @@ a.jqTransformSelectOpen {
 	margin-right: 60px;
 	border: 2px solid #ffffff;
 	text-align: center;
+	padding-left: 16px;
+	padding-right: 16px;
 
 }
 .wrapper_text_h1 h1{

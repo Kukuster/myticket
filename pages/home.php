@@ -124,18 +124,18 @@ get_template_part('header');
       <!---->
       <div class="wrapper_search">
         <div class="wrapper_text_h1">
-        <h1>Быстрый Поиск путешествия</h1>
+        <h1>Quick Travel Search</h1>
         </div>
         <div class="class_search_town">
           <div class="text_search">
-            <p>Выберете маршурт </p>
+            <p>Choose a route</p>
           </div>
-          <input type="text" placeholder="Откуда">
-          <input type="text" placeholder="Куда">
+          <input type="text" placeholder="From(sity)">
+          <input type="text" placeholder="To(sity)">
         </div>
         <div class="class_search_price">
           <div class="text_price">
-            <p>Введите суму, за которую хотелебы осуществить поездку</p>
+            <p>Enter the amount for which you want to travel</p>
           </div>
           <input type="text"placeholder="min">
           <input type="text" placeholder="max">
