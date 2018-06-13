@@ -182,12 +182,12 @@ get_template_part('header');
         <h3>About Our Airlines and Train</h3>
           <div class="wrapper">
               <article class="cols">
-                  <figure><img src="images/page1_img1.jpg" alt="" class="pad_bot2"></figure>
+                  <figure><img src="../inc/images/page1_img1.jpg" alt="" class="pad_bot2"></figure>
                   <p class="pad_bot1"><strong><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequatur dignissimos distinctio eaque est, ex harum laboriosam libero natus nemo nulla odio quae quia, quidem similique ut voluptas. Explicabo, sed.</span></strong></p>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, consectetur dignissimos ea error ex explicabo ipsum, magnam magni minima perferendis ullam ut vel velit vitae voluptas! A atque quae reprehenderit.: <a href="index.html">About</a>, <a href="offers.html">Offers</a>, <a href="book.html">Book</a>, <a href="services.html">Services</a>, <a href="safety.html">Safety</a>, <a href="contacts.html">Contacts</a>.</p>
               </article>
               <article class="cols pad_left1">
-                  <figure><img src="images/page1_img2.jpg" alt="" class="pad_bot2"></figure>
+                  <figure><img src="../inc/images/page1_img2.jpg" alt="" class="pad_bot2"></figure>
                   <p class="pad_bot1"><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eum quas quo repudiandae! Ab accusantium ad at culpa doloremque eius exercitationem harum iusto, obcaecati voluptatem! Consequatur, fuga, iusto? Esse, omnis.</strong></p>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad aliquid assumenda cupiditate deserunt, dolores ducimus harum impedit inventore laboriosam maxime minus necessitatibus nobis quibusdam quidem repellat voluptas voluptatem voluptatum!</p>
               </article>
