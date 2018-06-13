@@ -19,6 +19,7 @@ class myticket
         return 'SELECT
     DISTINCT routes_with_station.r_id as from_r_id,
     routes_with_station.v_id as from_v_id,
+    routes_with_station.vt_id as from vt_id,
     routes_with_station.m_id as from_m_id,
     routes_with_station.m_name as from_m_name,
     routes_with_station.r_price as from_r_price,
@@ -38,6 +39,7 @@ FROM
         myticket_route.r_station_i,
         CONCAT(myticket_route.r_id, ",", myticket_route.r_station_i) as route_n_station,
         myticket_vehicle.v_id,
+        myticket_model.vt_id,
         myticket_model.m_id,
         myticket_model.m_name,
         myticket_route.r_price,
@@ -88,6 +90,7 @@ GROUP BY routes_with_station.r_id, routes_with_station.r_station_i
         return 'SELECT
     DISTINCT routes_with_city.r_id as from_r_id,
     routes_with_city.v_id as from_v_id,
+    routes_with_city.vt_id as from_vt_id,
     routes_with_city.m_id as from_m_id,
     routes_with_city.m_name as from_m_name,
     routes_with_city.r_price as from_r_price,
@@ -107,6 +110,7 @@ FROM
         myticket_route.r_station_i,
         CONCAT(myticket_route.r_id, ",", myticket_route.r_station_i) as route_n_station,
         myticket_vehicle.v_id,
+        myticket_model.vt_id,
         myticket_model.m_id,
         myticket_model.m_name,
         myticket_route.r_price,
@@ -157,6 +161,7 @@ GROUP BY routes_with_city.r_id, routes_with_city.r_station_i
         return 'SELECT
     DISTINCT myticket_route.r_id as to_r_id,
     myticket_vehicle.v_id as to_v_id,
+    myticket_model.vt_id as to_vt_id,
     myticket_model.m_id as to_m_id,
     myticket_model.m_name as to_m_name,
     myticket_route.r_price as to_r_price,
@@ -191,6 +196,7 @@ GROUP BY
         return 'SELECT
     DISTINCT myticket_route.r_id as to_r_id,
     myticket_vehicle.v_id as to_v_id,
+    myticket_model.vt_id as to_vt_id,
     myticket_model.m_id as to_m_id,
     myticket_model.m_name as to_m_name,
     myticket_route.r_price as to_r_price,
@@ -348,7 +354,7 @@ WHERE
     }
     
     
-    public function get_routes_from_to($from, $to, array $search_by = array()){
+    public function get_routes_from_to($from, $to, array $search_by = array(), $vehicle_type){
         
         if ($search_by['from']=='city'){
             $routes_from = $this->sql_query_from_city($from);
@@ -378,7 +384,8 @@ FROM
     '. $routes_to .'
     ) as routes_to
     ON (routes_from.from_r_id = routes_to.to_r_id AND routes_from.from_r_station_i < routes_to.to_r_station_i)
-    
+WHERE
+    routes_from.from_vt_id = '. $vehicle_type .'
 ';      
         
         $result = $this->do_sql_query($sql);
@@ -419,6 +426,45 @@ FROM
     }
     
     
+    
+    public function get_all_cities(){
+        $sql = 'SELECT
+    myticket_city.c_name
+FROM
+    myticket_city
+';
+        $result = $this->do_sql_query($sql);
+        
+        $rows = array();
+        while($row = $result->fetch_assoc()){
+            $rows[] = $row;
+        }
+        
+        return $rows;
+    }
+
+    
+    
+    
+    public function get_all_stations(){
+        $sql = 'SELECT
+    myticket_city.c_name,
+    myticket_station.s_name
+FROM
+    myticket_city,
+    myticket_station
+WHERE
+    myticket_station.c_id = myticket_city.c_id
+';
+        $result = $this->do_sql_query($sql);
+        
+        $rows = array();
+        while($row = $result->fetch_assoc()){
+            $rows[] = $row;
+        }
+        
+        return $rows;
+    }
 
 
 

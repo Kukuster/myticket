@@ -1,5 +1,7 @@
 <?php 
 global $today;
+$cities = myticket()->get_all_cities();
+$city_stations = myticket()->get_all_stations();
 
 
 get_template_part('header');
@@ -55,42 +57,69 @@ get_template_part('header');
       
       <article class="col2">
         <div class="tabs2">
-          <ul class="nav">
-            <li class="selected"><a href="#Flight">Flight</a></li>
-            <li><a href="#Hotel">Hotel</a></li>
-            <li class="end"><a href="#Rental">Rental</a></li>
-          </ul>
+
           <div class="content">
             <div class="tab-content" id="Flight">
-              <form id="form_5" action="#" class="form_5" method="post">
+              <form id="form_5" action="/book/" class="form_5" method="get">
                 <div>
-                  <div class="radio">
-                    <div class="wrapper">
-                      <input type="radio" name="name1" checked>
-                      <span class="left">Show prices</span>
-                      <input type="radio" name="name1">
-                      <span class="left">Show flights</span> </div>
-                  </div>
                   <div class="pad">
                     <div class="wrapper under">
                       <div class="col1">
-                        <div class="row"><span class="left">From</span>
-                          <input type="text" class="input">
-                          <a href="#" class="help"></a> </div>
-                        <div class="row"><span class="left">To</span>
-                          <input type="text" class="input">
-                          <a href="#" class="help"></a> </div>
+                        <div class="row">
+                          <span class="left">From (city)</span>
+                          <select name="from_city" class="">
+                            <option value=""></option>
+                            <?php foreach ($cities as $city){ ?>
+                              <option value="<?php echo $city['c_name']; ?>"><?php echo $city['c_name']; ?></option>
+                            <?php } ?>
+                          </select>
+                          <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
+                        </div>
+                        <div class="row">
+                          <span class="left">To (city)</span>
+                          <select name="to_city" class="">
+                            <option value=""></option>
+                            <?php foreach ($cities as $city){ ?>
+                              <option value="<?php echo $city['c_name']; ?>"><?php echo $city['c_name']; ?></option>
+                            <?php } ?>
+                          </select>
+                          <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
+                        </div>
                       </div>
+                      <div class="col1">
+                        <div class="row">
+                          <span class="left">From (station)</span>
+                          <select name="from_station" class="">
+                            <option value=""></option>
+                            <?php foreach ($city_stations as $city_station){ ?>
+                              <option data-city="<?php echo $city_station['c_name']; ?>" value="<?php echo $city_station['s_name']; ?>"><?php echo $city_station['s_name']; ?></option>
+                            <?php } ?>
+                          </select>
+                          <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
+                        </div>
+                        <div class="row">
+                          <span class="left">To (station)</span>
+                          <select name="to_station" class="">
+                            <option value=""></option>
+                            <?php foreach ($city_stations as $city_station){ ?>
+                              <option data-city="<?php echo $city_station['c_name']; ?>" value="<?php echo $city_station['s_name']; ?>"><?php echo $city_station['s_name']; ?></option>
+                            <?php } ?>
+                          </select>
+                          <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
+                        </div>
+                      </div>
+                      <?php /* ?>
                       <div class="check_box">
                         <input type="checkbox">
-                        <span>One way</span> <a href="#" class="help"></a> </div>
-                      <div class="check_box">
-                        <input type="checkbox">
-                        <span>Direct flights</span> </div>
+                        <span>One way</span> <a href="#" class="help"></a>
+                      </div>
+                      <?php ///**/ ?>
                     </div>
-                    <div class="wrapper under"> <span class="left">Flights</span>
+                    <div class="wrapper under">
+                      <span class="left">Trains</span>
                       <div class="cols marg_right1">
-                        <h6>Outbound flight</h6>
+                        <h6>Outbound routes</h6>
+                        <?php /* ?>
                         <div class="row">
                           <input type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
                           <input type="text" class="input1" value="+/- 0 Days"  onblur="if(this.value=='') this.value='+/- 0 Days'" onFocus="if(this.value =='+/- 0 Days' ) this.value=''">
@@ -104,12 +133,14 @@ get_template_part('header');
                             </select>
                             <a href="#" class="marker_right"></a> </div>
                         </div>
+                        <?php ///**/ ?>
                         <div class="calendar" style="padding-top: 5px">
                           <p>Date: <input type="text" id="datepicker2"></p>
                         </div>
                       </div>
+                      <?php /* ?>
                       <div class="cols">
-                        <h5>Outbound flight</h5>
+                        <h5>Outbound routes</h5>
                         <div class="row">
                           <input type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
                           <input type="text" class="input1" value="+/- 0 Days"  onblur="if(this.value=='') this.value='+/- 0 Days'" onFocus="if(this.value =='+/- 0 Days' ) this.value=''">
@@ -127,8 +158,27 @@ get_template_part('header');
                           <p>Date: <input type="text" id="datepicker"></p>
                         </div>
                       </div>
+                      <?php ///**/ ?>
                     </div>
-                    <div class="wrapper pad_bot1"> <span class="left">Passengers</span>
+                    <div class="wrapper under">
+                        <div class="cols marg_right1">
+                            <h6>Minimum and Maximum price</h6>
+                            <div class="row">
+                              <span class="left">Minimum</span>
+                              <input name="price_min" type="text" class="input">
+                              <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
+                            </div>
+                            <div class="row">
+                              <span class="left">Maximum</span>
+                              <input name="price_max" type="text" class="input">
+                              <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="wrapper pad_bot1">
+                      <span style="display:none;" class="left">Passengers</span>
+                      <?php /* ?>
                       <div class="cols marg_right1">
                         <div class="row">
                           <input type="text" class="input2" value="2"  onblur="if(this.value=='') this.value='2'" onFocus="if(this.value =='2' ) this.value=''">
@@ -137,19 +187,22 @@ get_template_part('header');
                           <input type="text" class="input2" value="0"  onblur="if(this.value=='') this.value='0'" onFocus="if(this.value =='0' ) this.value=''">
                           <span class="left">Children</span> <a href="#" class="help"></a> </div>
                       </div>
+                      <?php ///**/ ?>
+                      <?php /* ?>
                       <div class="cols">
                         <div class="select1"><span class="left">Class</span>
                           <select>
                             <option>Economy</option>
                           </select>
-                          <a href="#" class="help"></a> </div>
-                        <div class="select1"><span class="left">Airline</span>
-                          <select>
-                            <option>Airlines</option>
-                          </select>
-                          <a href="#" class="help"></a> </div>
+                        </div>
                       </div>
-                      <span class="right relative"><a href="#" class="button1"><strong>Search</strong></a></span> </div>
+                      <?php ///**/ ?>
+                      <span class="right relative">
+                        <p href="#" class="button1">
+                          <input type="submit" value="Search">
+                        </p>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -229,7 +282,7 @@ if (isset($date) && !empty($date)){
 
 
 
-$routes = myticket()->get_routes_from_to($from, $to, $search_by);
+$routes = myticket()->get_routes_from_to($from, $to, $search_by, 1);
 
 
 $output_n = 0;
