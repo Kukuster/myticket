@@ -1064,6 +1064,8 @@ a.jqTransformSelectOpen {
 	margin-right: 60px;
 	border: 2px solid #ffffff;
 	text-align: center;
+	padding-left: 18px;
+	padding-right: 18px;
 
 }
 .wrapper_text_h1 h1{
@@ -1611,3 +1613,12 @@ xsigin/signup popup
 #cd-login.is-selected, #cd-signup.is-selected, #cd-reset-password.is-selected {
 	display: block;
 }
+/*Forms checkbox*/
+.button_vibor_trans{
+	color: #FFFFFF;
+	font-size: 18px;
+	float: left;
+	padding-top: 10px;
+}
+
+/**/

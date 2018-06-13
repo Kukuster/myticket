@@ -22,9 +22,8 @@
       <nav id="top_nav">
         <ul style="display: flex; flex-direction: row">
           <li><a href="index.html" class="nav1">Home</a></li>
-          <li><a href="#" class="nav2">Sitemap</a></li>
           <li><a href="contacts.html" class="nav3">Contact</a></li>
-          <li><a href="vhod.html" class="nav6">Вход/Регистр</a></li>
+          <li><a href="vhod.html" class="nav2">Вход/Регистр</a></li>
           <div class="lang">
             <a href="#">рус</a> /
             <a href="#">eng</a>
@@ -90,102 +89,37 @@
                 </div>
               </form>
             </div>
-            <div class="tab-content" id="Hotel">
-              <form id="form_2" action="#" method="post">
-                <div>
-                  <div class="radio">
-                    <div class="wrapper">
-                      <input type="checkbox" checked>
-                      Our Partners </div>
-                  </div>
-                  <div class="row"> <span class="left">Location</span>
-                    <input type="text" class="input">
-                  </div>
-                  <div class="row"> <span class="left">Check-in </span>
-                    <input type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
-                    <a href="#" class="help"></a> </div>
-                  <div class="row"> <span class="left">Check-out </span>
-                    <input type="text" class="input1" value="10.05.2011"  onblur="if(this.value=='') this.value='10.05.2011'" onFocus="if(this.value =='10.05.2011' ) this.value=''">
-                    <a href="#" class="help"></a> </div>
-                  <div class="row"> <span class="left">Rooms</span>
-                    <input type="text" class="input2" value="1"  onblur="if(this.value=='') this.value='1'" onFocus="if(this.value =='1' ) this.value=''">
-                    <a href="#" class="help"></a> </div>
-                  <div class="row"> <span class="left">Adults</span>
-                    <input type="text" class="input2" value="2"  onblur="if(this.value=='') this.value='2'" onFocus="if(this.value =='2' ) this.value=''">
-                  </div>
-                  <div class="row"> <span class="left">Children</span>
-                    <input type="text" class="input2" value="0"  onblur="if(this.value=='') this.value='0'" onFocus="if(this.value =='0' ) this.value=''">
-                    <span class="pad_left1">(0-11 years)</span> </div>
-                  <div class="wrapper"> <span class="right relative"><a href="#" class="button1"><strong>Search</strong></a></span> <a href="#" class="link1">More Options</a> </div>
-                </div>
-              </form>
-            </div>
-            <div class="tab-content" id="Rental">
-              <form id="form_3" action="#" method="post">
-                <div>
-                  <div class="radio">
-                    <div class="wrapper">
-                      <input type="radio" name="name2" checked>
-                      <span class="left">Avis</span>
-                      <input type="radio" name="name2">
-                      <span class="left">Europcar</span> </div>
-                  </div>
-                  <div class="row"> <span class="left">Rental location</span>
-                    <input type="text" class="input">
-                  </div>
-                  <div class="row"> <span class="left">Pick-up</span>
-                    <input type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
-                    <input type="text" class="input2" value="12:00"  onblur="if(this.value=='') this.value='12:00'" onFocus="if(this.value =='12:00' ) this.value=''">
-                  </div>
-                  <div class="row"> <span class="left">Return</span>
-                    <input type="text" class="input1" value="10.05.2011"  onblur="if(this.value=='') this.value='10.05.2011'" onFocus="if(this.value =='10.05.2011' ) this.value=''">
-                    <input type="text" class="input2" value="12:00"  onblur="if(this.value=='') this.value='12:00'" onFocus="if(this.value =='12:00' ) this.value=''">
-                  </div>
-                  <div class="row_select"> <span class="left">Miles &amp; More</span>
-                    <select>
-                      <option>no membership</option>
-                    </select>
-                  </div>
-                  <div class="row_select">
-                    <div class="pad_left1"> Country of residence<br>
-                      <div class="select1">
-                        <select>
-                          <option>&nbsp;</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="wrapper"> <span class="right relative"><a href="#" class="button1"><strong>Search</strong></a></span> </div>
-                </div>
-              </form>
-            </div>
           </div>
         </div>
       </article>
       <!--Form search tickets-2018->
       <!---->
-      <div class="wrapper_search">
-        <div class="wrapper_text_h1">
-        <h1>Быстрый Поиск путешествия</h1>
+        <div class="wrapper_search">
+            <div class="wrapper_text_h1">
+                <h1>Quick Travel Search</h1>
+            </div>
+            <div class="class_search_town">
+                <div class="text_search">
+                    <p>Choose a route</p>
+                </div>
+                <input type="text" placeholder="From(sity)">
+                <input type="text" placeholder="To(sity)">
+            </div>
+            <div class="class_search_price">
+                <div class="text_price">
+                    <p>Enter the amount for which you want to travel</p>
+                </div>
+                <input type="text"placeholder="min">
+                <input type="text" placeholder="max">
+            </div>
+            <div class="button_vibor_trans">
+                <input type="checkbox" name="bilet" value="Train">Train<br>
+                <input type="checkbox" name="bilet" value="Plane">Plane<br>
+            </div>
+            <div class="wrappers_search_btn">
+                <button  type="button" class="btn btn-primary active">Search </button>
+            </div>
         </div>
-        <div class="class_search_town">
-          <div class="text_search">
-            <p>Выберете маршурт </p>
-          </div>
-          <input type="text" placeholder="Откуда">
-          <input type="text" placeholder="Куда">
-        </div>
-        <div class="class_search_price">
-          <div class="text_price">
-            <p>Введите суму, за которую хотелебы осуществить поездку</p>
-          </div>
-          <input type="text"placeholder="min">
-          <input type="text" placeholder="max">
-        </div>
-        <div class="wrappers_search_btn">
-          <button  type="button" class="btn btn-primary active">Search </button>
-        </div>
-      </div>
       <!--<div id="slider"> <img src="images/banner1.jpg" alt=""> <img src="images/banner2.jpg" alt=""> <img src="images/banner3.jpg" alt=""> </div>-->
     </div>
     <div class="wrapper pad1">
@@ -221,13 +155,13 @@
         <div class="wrapper">
           <article class="cols">
             <figure><img src="images/page1_img1.jpg" alt="" class="pad_bot2"></figure>
-            <p class="pad_bot1"><strong>Airlines is one of free website templates created by TemplateMonster.com team.</strong></p>
-            <p>This website template is optimized for 1024X768 screen resolution. It is also XHTML &amp; CSS valid. This website template has several pages: <a href="index.html">About</a>, <a href="offers.html">Offers</a>, <a href="book.html">Book</a>, <a href="services.html">Services</a>, <a href="safety.html">Safety</a>, <a href="contacts.html">Contacts</a>.</p>
+            <p class="pad_bot1"><strong><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequatur dignissimos distinctio eaque est, ex harum laboriosam libero natus nemo nulla odio quae quia, quidem similique ut voluptas. Explicabo, sed.</span></strong></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, consectetur dignissimos ea error ex explicabo ipsum, magnam magni minima perferendis ullam ut vel velit vitae voluptas! A atque quae reprehenderit.: <a href="index.html">About</a>, <a href="offers.html">Offers</a>, <a href="book.html">Book</a>, <a href="services.html">Services</a>, <a href="safety.html">Safety</a>, <a href="contacts.html">Contacts</a>.</p>
           </article>
           <article class="cols pad_left1">
             <figure><img src="images/page1_img2.jpg" alt="" class="pad_bot2"></figure>
-            <p class="pad_bot1"><strong>This Airlines Template goes with two packages.</strong></p>
-            <p>With PSD source files and without them. PSD source files are available for free for the registered members of Templates.com. The basic package (without PSD source files) is available for anyone without registration).</p>
+            <p class="pad_bot1"><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eum quas quo repudiandae! Ab accusantium ad at culpa doloremque eius exercitationem harum iusto, obcaecati voluptatem! Consequatur, fuga, iusto? Esse, omnis.</strong></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad aliquid assumenda cupiditate deserunt, dolores ducimus harum impedit inventore laboriosam maxime minus necessitatibus nobis quibusdam quidem repellat voluptas voluptatem voluptatum!</p>
           </article>
         </div>
         <a href="#" class="button1"><strong>Read More</strong></a> </article>
