@@ -264,10 +264,6 @@ if (isset($_GET['price_min']) && !empty($_GET['price_min']) && isset($_GET['pric
 }
 
 
-$search_by = array(
-    'from'=>'city',
-    'to'=>'city'
-);
 
 
 
