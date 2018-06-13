@@ -387,7 +387,6 @@ FROM
 WHERE
     routes_from.from_vt_id = '. $vehicle_type .'
 ';      
-        debug($sql);
         $result = $this->do_sql_query($sql);
         
         $rows = array();

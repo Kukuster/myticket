@@ -1,16 +1,25 @@
-<?php 
-global $template, $page_title;
+<?php
+$template = $page->get_page_template();
+
+
+$home_page = get_page('home');
+$book_train_page = get_page('book_train');
+$book_plane_page = get_page('book_plane');
+$contacts_page = get_page('contacts');
+$login_page = get_page('login');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo $page_title; ?></title>
+<title><?php echo $page->get_page_title(); ?></title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../inc/css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="../inc/css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="../inc/css/style.css" type="text/css" media="all">
-<?php if ($template == 'book' || $template == 'book-flight' || $template == 'seat'){ ?>
+<?php if ($template == 'book' || $template == 'seat'){ ?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <?php } ?>
 <!--[if lt IE 9]>
@@ -24,7 +33,6 @@ switch ($template){
     case 'seat':
         $body_id='page1'; break;
     case 'book':
-    case 'book-flight':
         $body_id='page3'; break;
     case 'contacts':
         $body_id='page6'; break;
@@ -37,13 +45,13 @@ switch ($template){
   <!--header -->
   <header>
     <div class="wrapper">
-      <h1><a href="/" id="logo">AirLines</a></h1>
+      <h1><a href="<?php echo $home_page->get_url(); ?>" id="logo">AirLines</a></h1>
       <span id="slogan">Fast, Frequent &amp; Safe Flights</span>
       <nav id="top_nav">
         <ul style="display: flex; flex-direction: row">
-          <li><a href="/" class="nav1">Home</a></li>
-          <li><a href="/contacts" class="nav3">Contact</a></li>
-          <li><a href="/login" class="nav2">Вход/Регистр</a></li>
+          <li><a href="<?php echo $home_page->get_url(); ?>" class="nav1">Home</a></li>
+          <li><a href="<?php echo $contacts_page->get_url(); ?>" class="nav3">Contact</a></li>
+          <li><a href="<?php echo $login_page->get_url(); ?>" class="nav2">Вход/Регистр</a></li>
           <div class="lang">
             <a href="#">рус</a> /
             <a href="#">eng</a>
@@ -54,9 +62,21 @@ switch ($template){
     </div>
     <nav>
       <ul id="menu">
-        <li <?php if ($template == 'book'){ ?> id="menu_active"<?php } ?>><a href="/book"><span><span>Train</span></span></a></li>
-        <li <?php if ($template == 'book-flight'){ ?> id="menu_active"<?php } ?>><a href="/book-flight"><span><span>Plane</span></span></a></li>
-        <li <?php if ($template == 'contacts'){ ?> id="menu_active"<?php } ?> class="end"><a href="/contacts"><span><span>Contacts</span></span></a></li>
+        <li <?php if ($page == $book_train_page){ ?> id="menu_active"<?php } ?>>
+            <a href="<?php echo $book_train_page->get_url(); ?>">
+                <span><span>Train</span></span>
+            </a>
+        </li>
+        <li <?php if ($page == $book_plane_page){ ?> id="menu_active"<?php } ?>>
+            <a href="<?php echo $book_plane_page->get_url(); ?>">
+                <span><span>Plane</span></span>
+            </a>
+        </li>
+        <li <?php if ($page == $contacts_page){ ?> id="menu_active"<?php } ?> class="end">
+            <a href="<?php echo $contacts_page->get_url(); ?>">
+                <span><span>Contacts</span></span>
+            </a>
+        </li>
       </ul>
     </nav>
   </header>

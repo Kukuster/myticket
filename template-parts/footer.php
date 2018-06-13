@@ -1,13 +1,14 @@
 <?php
-global $template;
+$template = $page->get_page_template();
+
 ?>
   <!--footer -->
   <footer>
     <div class="wrapper">
       <ul id="icons">
-        <li><a href="#" class="normaltip"><img src="../inc/images/icon1.jpg" alt=""></a></li>
-        <li><a href="#" class="normaltip"><img src="../inc/images/icon4.jpg" alt=""></a></li>
-        <li><a href="#" class="normaltip"><img src="../inc/images/icon5.jpg" alt=""></a></li>
+        <li><a href="javascript:void(0)" class="normaltip"><img src="../inc/images/icon1.jpg" alt=""></a></li>
+        <li><a href="javascript:void(0)" class="normaltip"><img src="../inc/images/icon4.jpg" alt=""></a></li>
+        <li><a href="javascript:void(0)" class="normaltip"><img src="../inc/images/icon5.jpg" alt=""></a></li>
       </ul>
       <div class="links">Copyright 2018 &copy; <a href="#">Web Site</a> All Rights Reserved<br></div>
     </div>

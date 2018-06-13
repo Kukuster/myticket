@@ -4,63 +4,22 @@ $cities = myticket()->get_all_cities();
 $city_stations = myticket()->get_all_stations();
 
 
-get_template_part('header');
+get_template_part('header', array(
+    'page_name'=>$page_name,
+));
 ?>
   <!--content -->
   <section id="content">
     <div class="wrapper pad1">
-      <article class="col1">
-        <div class="box1">
-          <h2 class="top">Hot Offers of the Week</h2>
-          <div class="pad"> <strong>Birmingham</strong><br>
-            <ul class="pad_bot1 list1">
-              <li><span class="right color1">from GBP 143.-</span><a href="book2.html">Zurich</a></li>
-            </ul>
-            <strong>London (LCY)</strong><br>
-            <ul class="pad_bot1 list1">
-              <li><span class="right color1">from GBP 176.-</span><a href="book2.html">Geneva</a></li>
-              <li><span class="right color1">from GBP 109.-</span><a href="book2.html">Zurich</a></li>
-            </ul>
-            <strong>London (LHR)</strong><br>
-            <ul class="pad_bot2 list1">
-              <li><span class="right color1">from GBP 100.-</span><a href="book2.html">Geneva</a></li>
-              <li><span class="right color1">from GBP 112.-</span><a href="book2.html">Zurich</a></li>
-              <li><span class="right color1">from GBP 88.-</span><a href="book2.html">Basel</a></li>
-            </ul>
-            <strong>Manchester</strong><br>
-            <ul class="pad_bot2 list1">
-              <li><span class="right color1">from GBP 97.-</span><a href="book2.html">Basel</a></li>
-              <li><span class="right color1">from GBP 103.-</span><a href="book2.html">Zurich</a></li>
-            </ul>
-            <strong>Edinburgh</strong><br>
-            <ul class="pad_bot2 list1">
-              <li><span class="right color1">from GBP 165.-</span><a href="book2.html">Zurich</a></li>
-            </ul>
-            <strong>Birmingham</strong><br>
-            <ul class="pad_bot1 list1">
-              <li><span class="right color1">from GBP 143.-</span><a href="book2.html">Zurich</a></li>
-            </ul>
-            <strong>London (LCY)</strong><br>
-            <ul class="pad_bot1 list1">
-              <li><span class="right color1">from GBP 176.-</span><a href="book2.html">Geneva</a></li>
-              <li><span class="right color1">from GBP 109.-</span><a href="book2.html">Zurich</a></li>
-            </ul>
-            <strong>London (LHR)</strong><br>
-            <ul class="pad_bot2 list1">
-              <li><span class="right color1">from GBP 100.-</span><a href="book2.html">Geneva</a></li>
-              <li><span class="right color1">from GBP 112.-</span><a href="book2.html">Zurich</a></li>
-              <li><span class="right color1">from GBP 88.-</span><a href="book2.html">Basel</a></li>
-            </ul>
-          </div>
-        </div>
-      </article>
+    
+      <?php get_template_part('hot_offers_side_column'); ?>
       
       <article class="col2">
         <div class="tabs2">
 
           <div class="content">
             <div class="tab-content" id="Flight">
-              <form id="form_5" action="/book-flight/" class="form_5" method="get">
+              <form id="form_5" action="<?php echo $form_action; ?>" class="form_5" method="get">
                 <div>
                   <div class="pad">
                     <div class="wrapper under">
@@ -73,7 +32,6 @@ get_template_part('header');
                               <option value="<?php echo $city['c_name']; ?>"><?php echo $city['c_name']; ?></option>
                             <?php } ?>
                           </select>
-                          <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
                         </div>
                         <div class="row">
                           <span class="left">To (city)</span>
@@ -83,7 +41,6 @@ get_template_part('header');
                               <option value="<?php echo $city['c_name']; ?>"><?php echo $city['c_name']; ?></option>
                             <?php } ?>
                           </select>
-                          <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
                         </div>
                       </div>
                       <div class="col1">
@@ -95,7 +52,6 @@ get_template_part('header');
                               <option data-city="<?php echo $city_station['c_name']; ?>" value="<?php echo $city_station['s_name']; ?>"><?php echo $city_station['s_name']; ?></option>
                             <?php } ?>
                           </select>
-                          <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
                         </div>
                         <div class="row">
                           <span class="left">To (station)</span>
@@ -105,60 +61,17 @@ get_template_part('header');
                               <option data-city="<?php echo $city_station['c_name']; ?>" value="<?php echo $city_station['s_name']; ?>"><?php echo $city_station['s_name']; ?></option>
                             <?php } ?>
                           </select>
-                          <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
                         </div>
                       </div>
-                      <?php /* ?>
-                      <div class="check_box">
-                        <input type="checkbox">
-                        <span>One way</span> <a href="#" class="help"></a>
-                      </div>
-                      <?php ///**/ ?>
                     </div>
                     <div class="wrapper under">
-                      <span class="left">Planes</span>
+                      <span class="left"><?php echo $filter_title; ?></span>
                       <div class="cols marg_right1">
-                        <h6>Outbound flights</h6>
-                        <?php /* ?>
-                        <div class="row">
-                          <input type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
-                          <input type="text" class="input1" value="+/- 0 Days"  onblur="if(this.value=='') this.value='+/- 0 Days'" onFocus="if(this.value =='+/- 0 Days' ) this.value=''">
-                        </div>
-                        <div class="marg_top1">
-                          <div class="select1"> <a href="#" class="marker_left"></a>
-                            <select>
-                              <option>May 11</option>
-                              <option>June 11</option>
-                              <option>July 11</option>
-                            </select>
-                            <a href="#" class="marker_right"></a> </div>
-                        </div>
-                        <?php ///**/ ?>
+                        <h6><?php echo $filter_subtitle; ?></h6>
                         <div class="calendar" style="padding-top: 5px">
                           <p>Date: <input type="text" id="datepicker2"></p>
                         </div>
                       </div>
-                      <?php /* ?>
-                      <div class="cols">
-                        <h5>Outbound routes</h5>
-                        <div class="row">
-                          <input type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
-                          <input type="text" class="input1" value="+/- 0 Days"  onblur="if(this.value=='') this.value='+/- 0 Days'" onFocus="if(this.value =='+/- 0 Days' ) this.value=''">
-                        </div>
-                        <div class="marg_top1">
-                          <div class="select1"> <a href="#" class="marker_left"></a>
-                            <select>
-                              <option>May 11</option>
-                              <option>June 11</option>
-                              <option>July 11</option>
-                            </select>
-                            <a href="#" class="marker_right"></a> </div>
-                        </div>
-                        <div class="calendar"style="padding-top: 5px">
-                          <p>Date: <input type="text" id="datepicker"></p>
-                        </div>
-                      </div>
-                      <?php ///**/ ?>
                     </div>
                     <div class="wrapper under">
                         <div class="cols marg_right1">
@@ -178,25 +91,6 @@ get_template_part('header');
                     </div>
                     <div class="wrapper pad_bot1">
                       <span style="display:none;" class="left">Passengers</span>
-                      <?php /* ?>
-                      <div class="cols marg_right1">
-                        <div class="row">
-                          <input type="text" class="input2" value="2"  onblur="if(this.value=='') this.value='2'" onFocus="if(this.value =='2' ) this.value=''">
-                          <span class="left">Adults</span> <a href="#" class="help"></a> </div>
-                        <div class="row">
-                          <input type="text" class="input2" value="0"  onblur="if(this.value=='') this.value='0'" onFocus="if(this.value =='0' ) this.value=''">
-                          <span class="left">Children</span> <a href="#" class="help"></a> </div>
-                      </div>
-                      <?php ///**/ ?>
-                      <?php /* ?>
-                      <div class="cols">
-                        <div class="select1"><span class="left">Class</span>
-                          <select>
-                            <option>Economy</option>
-                          </select>
-                        </div>
-                      </div>
-                      <?php ///**/ ?>
                       <span class="right relative">
                         <p href="#" class="button1">
                           <input type="submit" value="Search">
@@ -268,7 +162,6 @@ if (isset($_GET['price_min']) && !empty($_GET['price_min']) && isset($_GET['pric
 
 
 
-
 if (isset($date) && !empty($date)){
     $datetime_unix = mktime(0, 0, 0, substr($date,5,2), substr($date,8,2), substr($date,0,4));
     $datetime = new DateTime();
@@ -278,7 +171,7 @@ if (isset($date) && !empty($date)){
 
 
 
-$routes = myticket()->get_routes_from_to($from, $to, $search_by, 2);
+$routes = myticket()->get_routes_from_to($from, $to, $search_by, $vt_id);
 
 
 $output_n = 0;
@@ -357,7 +250,9 @@ foreach ($routes as $route){
             'arrival'=>$route['to']['r_time1'],
             
             'available'=>$available,
-            'price'=>$route_part_price
+            'price'=>$route_part_price,
+            
+            'route_image_filename'=>$route_image_filename,
             
         ));
         

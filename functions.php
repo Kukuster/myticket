@@ -106,6 +106,48 @@ function decr(&$i, $min, $max) {
 
 
 
+function get_page_by_id($id){
+    global $pages;
+    if (isset($pages[$id]) && !empty($pages[$id])){
+        return $pages[$id];
+    }
+    return NULL;
+}
+
+function get_page_by_name($name){
+    global $pages;
+    foreach ($pages as $page){
+        if ($page->get_name() == $name){
+            return $page;
+        }
+    }
+    return NULL;
+}
+
+function get_page($id_or_name){
+    if (is_int($id_or_name)){
+        return get_page_by_id($id_or_name);
+    }
+    if (is_string($id_or_name)){
+        return get_page_by_name($id_or_name);
+    }
+    
+    return NULL;
+}
+
+
+
+
+
+function add_page($id, $name, $url, $page_template, $page_title, array $page_settings=array()){
+    return new page($id, $name, $url, $page_template, $page_title, $page_settings);
+}
+
+
+
+
+
+
 
 function get_template($template, array $args = array()){
     extract($args);
@@ -116,6 +158,7 @@ function get_template($template, array $args = array()){
 
 function get_template_part($template, array $args = array()){
     extract($args);
+    global $page;
     global $template_parts_dir;
     include $template_parts_dir.$template.'.php';
 }

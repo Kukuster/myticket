@@ -7,7 +7,7 @@
   <div class="left_section">
     <div class="left_inform">
       <ul>
-        <img src="../inc/images/train.png" alt="Поезд">
+        <img src="../inc/images/<?php echo $route_image_filename; ?>" alt="Поезд">
         <li>
           <span><?php echo get_vehicle_output_id($v_id); ?></span>
         </li>
