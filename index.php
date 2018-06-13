@@ -31,8 +31,15 @@ if (isset($_SERVER['REQUEST_SCHEME']) && !empty($_SERVER['REQUEST_SCHEME']) && i
 
 
 
+
+
+
 //// DB initialization
 myticket_class_initialize();
+
+
+
+
 
 
 
@@ -44,8 +51,10 @@ global $pages;
 $pages=array();
 
 
-/// id, name, url,
-/// template, title, settings
+/// add_page(id, name, url,
+/// template,
+/// title,
+/// [settings]);
 
 add_page(1, 'home', '',
 'home',
@@ -75,7 +84,7 @@ array(
 
 add_page(5, 'book_plane', 'book-flight',
 'book',
-'MyTicket | Book Train',
+'MyTicket | Book Flight',
 array(
     'filter_title'=>'Planes',
     'filter_subtitle'=>'Outbound flights',
@@ -88,6 +97,8 @@ add_page(6, 'seat', 'seat',
 'seat',
 'MyTicket | Choose your seat'
 );
+
+
 
 
 

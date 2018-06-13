@@ -4,9 +4,7 @@ $cities = myticket()->get_all_cities();
 $city_stations = myticket()->get_all_stations();
 
 
-get_template_part('header', array(
-    'page_name'=>$page_name,
-));
+get_template_part('header');
 ?>
   <!--content -->
   <section id="content">
@@ -19,7 +17,7 @@ get_template_part('header', array(
 
           <div class="content">
             <div class="tab-content" id="Flight">
-              <form id="form_5" action="<?php echo $form_action; ?>" class="form_5" method="get">
+              <form id="form_5" action="<?php echo $page->get_url(); ?>" class="form_5" method="get">
                 <div>
                   <div class="pad">
                     <div class="wrapper under">
@@ -65,9 +63,9 @@ get_template_part('header', array(
                       </div>
                     </div>
                     <div class="wrapper under">
-                      <span class="left"><?php echo $filter_title; ?></span>
+                      <span class="left"><?php echo $page->get_page_setting('filter_title'); ?></span>
                       <div class="cols marg_right1">
-                        <h6><?php echo $filter_subtitle; ?></h6>
+                        <h6><?php echo $page->get_page_setting('filter_subtitle'); ?></h6>
                         <div class="calendar" style="padding-top: 5px">
                           <p>Date: <input type="text" id="datepicker2"></p>
                         </div>
@@ -79,15 +77,12 @@ get_template_part('header', array(
                             <div class="row">
                               <span class="left">Minimum</span>
                               <input name="price_min" type="text" class="input">
-                              <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
                             </div>
                             <div class="row">
                               <span class="left">Maximum</span>
                               <input name="price_max" type="text" class="input">
-                              <?php /* ?><a href="#" class="help"></a><?php ///**/ ?>
                             </div>
                         </div>
-
                     </div>
                     <div class="wrapper pad_bot1">
                       <span style="display:none;" class="left">Passengers</span>
@@ -171,7 +166,7 @@ if (isset($date) && !empty($date)){
 
 
 
-$routes = myticket()->get_routes_from_to($from, $to, $search_by, $vt_id);
+$routes = myticket()->get_routes_from_to($from, $to, $search_by, $page->get_page_setting('vt_id'));
 
 
 $output_n = 0;
@@ -239,11 +234,15 @@ foreach ($routes as $route){
         
         
         get_template_part('route-block', array(
+            'r_id'=>$route['from']['r_id'],
             'v_id'=>$route['from']['v_id'],
             'm_name'=>$route['from']['m_name'],
             
             'from_s_name'=>$route['from']['s_name'],
             'to_s_name'=>$route['to']['s_name'],
+            
+            'from_r_station_i'=>$route['from']['r_station_i'],
+            'to_r_station_i'=>$route['to']['r_station_i'],
             
             'departure'=>$route['from']['r_time2'],
             'duration'=>$duration,
@@ -276,4 +275,5 @@ endif;
 ?>
 
 <?php 
+
 get_template_part('footer');

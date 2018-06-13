@@ -250,6 +250,43 @@ GROUP BY
     
     
     public function get_route_by_id($route_id){
+        $sql = 'SELECT
+    myticket_route.r_id,
+    myticket_vehicle.v_id,
+    myticket_model.m_id,
+    myticket_model.m_name,
+    myticket_route.r_price,
+    myticket_route.r_time1,
+    myticket_route.r_time2,
+    myticket_route.r_station_i,
+    myticket_station.s_id,
+    myticket_station.s_name,
+    myticket_station.s_code,
+    myticket_city.c_id,
+    myticket_city.c_name,
+    myticket_city.c_country
+FROM
+    myticket_route,
+    myticket_vehicle,
+    myticket_model,
+    myticket_station,
+    myticket_city
+WHERE
+    myticket_route.v_id = myticket_vehicle.v_id AND
+    myticket_vehicle.m_id = myticket_model.m_id AND
+    myticket_route.s_id = myticket_station.s_id AND
+    myticket_station.c_id = myticket_city.c_id AND
+    myticket_route.r_id = ' . $route_id . '
+';
+        
+        $result = $this->do_sql_query($sql);
+        
+        $rows = array();
+        while($row = $result->fetch_assoc()){
+            $rows[] = $row;
+        }
+        
+        return $rows;
         
     }
     
@@ -354,6 +391,7 @@ WHERE
     }
     
     
+    
     public function get_routes_from_to($from, $to, array $search_by = array(), $vehicle_type){
         
         if ($search_by['from']=='city'){
@@ -387,6 +425,7 @@ FROM
 WHERE
     routes_from.from_vt_id = '. $vehicle_type .'
 ';      
+        
         $result = $this->do_sql_query($sql);
         
         $rows = array();

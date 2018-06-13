@@ -1,13 +1,16 @@
 <?php
 // check $available
 
+
+$seat_page = get_page('seat');
+
  ?>
 <!--bilet-->
 <div class="bilet_train">
   <div class="left_section">
     <div class="left_inform">
       <ul>
-        <img src="../inc/images/<?php echo $route_image_filename; ?>" alt="Поезд">
+        <img src="../inc/images/<?php echo $page->get_page_setting('route_image_filename'); ?>" alt="Поезд">
         <li>
           <span><?php echo get_vehicle_output_id($v_id); ?></span>
         </li>
@@ -50,11 +53,12 @@
           <td>$<?php echo $class['ms_price_coef'] * $price; ?></td>
         </tr>
         <?php } ?>
+        <?php $buy_url = $seat_page->get_url() . '?' . 'r_id='.$r_id . '&' . 'from_r_station_i='.$from_r_station_i . '&' . 'to_r_station_i='.$to_r_station_i; ?>
         <tr>
-          <td colspan="3" style="text-align: center;"><a href="#">Buy</a></td>
+          <td colspan="3" style="text-align: center;"><a href="<?php echo $buy_url; ?>">Buy</a></td>
         </tr>
         <tr>
-          <td colspan="3" style="text-align: center;"><a href="#">Make a reservation</a></td>
+          <td colspan="3" style="text-align: center;"><a href="<?php echo $buy_url; ?>">Make a reservation</a></td>
         </tr>
       </table>
     </div>

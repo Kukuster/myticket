@@ -262,3 +262,13 @@ function get_week_number(DateTime $datetime){
 
 
 
+
+function usd_to_uah($money){
+    return $money*26;
+}
+
+
+
+
+
+
