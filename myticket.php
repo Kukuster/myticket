@@ -19,7 +19,7 @@ class myticket
         return 'SELECT
     DISTINCT routes_with_station.r_id as from_r_id,
     routes_with_station.v_id as from_v_id,
-    routes_with_station.vt_id as from vt_id,
+    routes_with_station.vt_id as from_vt_id,
     routes_with_station.m_id as from_m_id,
     routes_with_station.m_name as from_m_name,
     routes_with_station.r_price as from_r_price,
@@ -387,7 +387,7 @@ FROM
 WHERE
     routes_from.from_vt_id = '. $vehicle_type .'
 ';      
-        
+        debug($sql);
         $result = $this->do_sql_query($sql);
         
         $rows = array();
