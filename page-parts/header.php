@@ -23,6 +23,8 @@ switch ($template){
         $body_id='page1'; break;
     case 'book':
         $body_id='page3'; break;
+    case 'contacts':
+        $body_id='page6'; break;
     default:
         $body_id='page1'; break;
 }

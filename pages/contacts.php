@@ -1,54 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>AirLines | Contacts</title>
-<meta charset="utf-8">
-<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-<script type="text/javascript" src="js/jquery-1.5.2.js" ></script>
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/cufon-replace.js"></script>
-<script type="text/javascript" src="js/Cabin_400.font.js"></script>
-<script type="text/javascript" src="js/tabs.js"></script>
-<script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
-<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
-<script type="text/javascript" src="js/atooltip.jquery.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<style type="text/css">.main, .tabs ul.nav a, .content, .button1, .box1, .top { behavior:url("../js/PIE.htc")}</style>
-<![endif]-->
-</head>
-<body id="page6">
-<div class="main">
-  <!--header -->
-  <header>
-    <div class="wrapper">
-      <h1><a href="index.html" id="logo">AirLines</a></h1>
-      <span id="slogan">Fast, Frequent &amp; Safe Flights</span>
-      <nav id="top_nav">
-        <ul>
-          <li><a href="index.html" class="nav1">Home</a></li>
-          <li><a href="#" class="nav2">Sitemap</a></li>
-          <li><a href="contacts.html" class="nav3">Contact</a></li>
-          <div class="lang">
-            <a href="#">рус</a> /
-            <a href="#">eng</a>
-          </div>
-        </ul>
-      </nav>
-    </div>
-    <nav>
-      <ul id="menu">
-        <li><a href="index.html"><span><span>About</span></span></a></li>
-        <li><a href="book.html"><span><span>Book</span></span></a></li>
-        <li id="menu_active" class="end"><a href="contacts.html"><span><span>Contacts</span></span></a></li>
-      </ul>
-
-    </nav>
-  </header>
-  <!-- / header -->
+<?php 
+get_template_part('header');
+?>
   <!--content -->
   <section id="content">
     <div class="wrapper pad1">
@@ -93,19 +45,5 @@
   </section>
   <!--content end-->
 
-  <!--footer -->
-  <footer>
-    <div class="wrapper">
-      <ul id="icons">
-        <li><a href="#" class="normaltip"><img src="images/icon1.jpg" alt=""></a></li>
-        <li><a href="#" class="normaltip"><img src="images/icon4.jpg" alt=""></a></li>
-        <li><a href="#" class="normaltip"><img src="images/icon5.jpg" alt=""></a></li>
-      </ul>
-      <div class="links">Copyright 2018 &copy; <a href="#">Web Site</a> All Rights Reserved<br></div>
-    </div>
-  </footer>
-  <!--footer end-->
-</div>
-<script type="text/javascript">Cufon.now();</script>
-</body>
-</html>
+<?php 
+get_template_part('footer');
