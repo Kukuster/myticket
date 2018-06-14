@@ -43,6 +43,26 @@ $language_data['book']['We are sorry, there is no route that satisfy your requir
 
 
 
+$language_data['route_block'] = array();
+
+$language_data['route_block']['Departure'] = 'Departure:';
+$language_data['route_block']['Travel time'] = 'Travel time:';
+$language_data['route_block']['Arrival'] = 'Arrival:';
+$language_data['route_block']['Travel class'] = 'Travel class';
+$language_data['route_block']['Seats available'] = 'Seats available';
+$language_data['route_block']['Price'] = 'Price';
+$language_data['route_block']['Buy'] = 'Buy';
+$language_data['route_block']['Make a reservation'] = 'Make a reservation';
+
+
+
+
+
+
+
+
+
+
 $language_data['contact_us'] = array();
 
 $language_data['contact_us']['Contact Us'] = 'Contact Us';

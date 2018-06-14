@@ -43,6 +43,26 @@ $language_data['book']['We are sorry, there is no route that satisfy your requir
 
 
 
+$language_data['route_block'] = array();
+
+$language_data['route_block']['Departure'] = 'Отправление:';
+$language_data['route_block']['Travel time'] = 'В пути:';
+$language_data['route_block']['Arrival'] = 'Прибытие:';
+$language_data['route_block']['Travel class'] = 'Тип места';
+$language_data['route_block']['Seats available'] = 'Количество свободных мест';
+$language_data['route_block']['Price'] = 'Цена';
+$language_data['route_block']['Buy'] = 'Купить';
+$language_data['route_block']['Make a reservation'] = 'Забронировать';
+
+
+
+
+
+
+
+
+
+
 $language_data['contact_us'] = array();
 
 $language_data['contact_us']['Contact Us'] = 'Контакты';

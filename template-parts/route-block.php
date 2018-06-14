@@ -1,6 +1,6 @@
 <?php
 // check $available
-
+global $language_data;
 
 $seat_page = get_page('seat');
 
@@ -35,9 +35,9 @@ $seat_page = get_page('seat');
         </div>
       </div>
       <ul>
-        <li>Отправление: <span><?php echo $departure; ?></span></li>
-        <li> В пути: <span><?php echo $duration; ?></span></li>
-        <li>Прибытие: <span><?php echo $arrival; ?></span></li>
+        <li><?php echo $language_data['route_block']['Departure']; ?> <span><?php echo $departure; ?></span></li>
+        <li> <?php echo $language_data['route_block']['Travel time']; ?> <span><?php echo $duration; ?></span></li>
+        <li><?php echo $language_data['route_block']['Arrival']; ?> <span><?php echo $arrival; ?></span></li>
         <li></li>
       </ul>
     </div>
@@ -47,9 +47,9 @@ $seat_page = get_page('seat');
       <img src="../inc/images/line.png" alt="Линия раздел">
       <table>
         <tr>
-          <th>Тип места</th>
-          <th>Количество свободных мест</th>
-          <th>Цена</th>
+          <th><?php echo $language_data['route_block']['Travel class']; ?></th>
+          <th><?php echo $language_data['route_block']['Seats available']; ?></th>
+          <th><?php echo $language_data['route_block']['Price']; ?></th>
         </tr>
         <?php foreach ($available as $class){ ?>
         <tr>
@@ -60,10 +60,10 @@ $seat_page = get_page('seat');
         <?php } ?>
         <?php $buy_url = $seat_page->get_url() . '?' . 'r_id='.$r_id . '&' . 'from_r_station_i='.$from_r_station_i . '&' . 'to_r_station_i='.$to_r_station_i; ?>
         <tr>
-          <td colspan="3" style="text-align: center;"><a href="<?php echo $buy_url; ?>">Buy</a></td>
+          <td colspan="3" style="text-align: center;"><a href="<?php echo $buy_url; ?>"><?php echo $language_data['route_block']['Buy']; ?></a></td>
         </tr>
         <tr>
-          <td colspan="3" style="text-align: center;"><a href="<?php echo $buy_url; ?>">Make a reservation</a></td>
+          <td colspan="3" style="text-align: center;"><a href="<?php echo $buy_url; ?>"><?php echo $language_data['route_block']['Make a reservation']; ?></a></td>
         </tr>
       </table>
     </div>
