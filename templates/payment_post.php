@@ -49,8 +49,8 @@ $filename = '';
 if (myticket()->seat_is_available($r_id, $from_r_station_i, $to_r_station_i, $seat_i)){
     myticket()->add_ticket($r_id, $seat_i, $from_r_station_i, $to_r_station_i, $price, $purchase_time, $u_id) or die(myticket()->error());
     
-    $pdf_text = 'Route: ' . get_route_output_id($r_id) . '  -  '.$route[$from_r_station_i]['s_name'].' => '.$route[$to_r_station_i]['s_name'].' ( '.get_route_output_id($v_id)." )\n
-    Date and time: " . $purchase_time."\n".
+    $pdf_text = 'Route: ' . get_route_output_id($r_id) . '  -  '.$route[$from_r_station_i]['s_name'].' => '.$route[$to_r_station_i]['s_name'].' ( '.get_vehicle_output_id($v_id).' )'."\n".
+    'Date and time: ' . $purchase_time."\n".
     'Price: ' . $price . ' UAH'."\n".
     'Bank card: ' . $_POST['number']."\n".
     'Full name: ' . $_POST['name']."\n".
