@@ -69,7 +69,12 @@ $(document).ready(function () {
 <?php } ?>
 
 
-<script type="text/javascript" src="../inc/js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+
+<?php if ($template=='seat'){ ?>
+<script type="text/javascript" src="../inc/js/seat.js"></script>
+<?php } ?>
+
 <script type="text/javascript" src="../inc/js/cufon-yui.js"></script>
 <script type="text/javascript" src="../inc/js/cufon-replace.js"></script>
 <script type="text/javascript" src="../inc/js/Cabin_400.font.js"></script>

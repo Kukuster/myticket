@@ -232,7 +232,34 @@ function get_vehicle_output_id($vehicle_id){
 
 function datetime_difference(DateTime $datetime1, DateTime $datetime2){
     $interval = date_diff($datetime1, $datetime2);
-    return $interval->format('%h:%i');
+    $hours = $interval->format('%h');
+    $minutes = $interval->format('%i');
+    
+    if (strlen((string)$minutes) == 1){
+        $minutes = '0' . (string)$minutes;
+    }
+    
+    return $hours . ':' . $minutes;
+}
+
+
+
+
+function leading_zeros($number, $length){
+    $original_length = strlen((string)$number);
+    
+    $number = (string)$number;
+    
+    if ($original_length>=$length){
+        return $number;
+    }
+    
+    for($i=$original_length; $i<$length; $i++){
+        $number = '0'.$number;
+    }
+    
+    return $number;
+    
 }
 
 

@@ -32,6 +32,15 @@ if (isset($_SERVER['REQUEST_SCHEME']) && !empty($_SERVER['REQUEST_SCHEME']) && i
 
 
 
+//// load libs
+include_once 'libs/fpdf181/fpdf.php';
+
+
+
+
+
+
+
 
 
 //// DB initialization
@@ -52,56 +61,72 @@ $pages=array();
 
 
 /// add_page(id, name, url,
-/// template,
-/// title,
-/// [settings]);
+///     template,
+///     title,
+///     [settings]
+///);
 
 add_page(1, 'home', '',
-'home',
-'MyTicket'
+    'home',
+    'MyTicket'
 );
 
 add_page(2, 'contacts', 'contacts',
-'contacts',
-'MyTicket | Contacts'
+    'contacts',
+    'MyTicket | Contacts'
 );
 
 add_page(3, 'login', 'login',
-'login',
-'MyTicket | Log In'
+    'login',
+    'MyTicket | Log In'
 );
 
 add_page(4, 'book_train', 'book',
-'book',
-'MyTicket | Book Train',
-array(
-    'filter_title'=>'Trains',
-    'filter_subtitle'=>'Outbound routes',
-    'vt_id'=>1,
-    'route_image_filename'=>'train.png'
-)
+    'book',
+    'MyTicket | Book Train',
+    array(
+        'filter_title'=>'Trains',
+        'filter_subtitle'=>'Outbound routes',
+        'vt_id'=>1,
+        'route_image_filename'=>'train.png'
+    )
 );
 
 add_page(5, 'book_plane', 'book-flight',
-'book',
-'MyTicket | Book Flight',
-array(
-    'filter_title'=>'Planes',
-    'filter_subtitle'=>'Outbound flights',
-    'vt_id'=>2,
-    'route_image_filename'=>'plane-icon_sq64.png'
-)
+    'book',
+    'MyTicket | Book Flight',
+    array(
+        'filter_title'=>'Planes',
+        'filter_subtitle'=>'Outbound flights',
+        'vt_id'=>2,
+        'route_image_filename'=>'plane-icon_sq64.png'
+    )
 );
 
 add_page(6, 'seat', 'seat',
-'seat',
-'MyTicket | Choose your seat'
+    'seat',
+    'MyTicket | Choose your seat'
 );
 
+add_page(7, 'payment', 'payment',
+    'payment',
+    'MyTicket | Payment'
+);
 
+add_page(8, 'payment_post', 'payment_post',
+    'payment_post',
+    'MyTicket | Processing payment...'
+);
 
+add_page(9, 'thank-you-purchased', 'thank-you-purchased',
+    'thank-you-purchased',
+    'MyTicket | Thank you!'
+);
 
-
+add_page(10, 'download-file', 'download-file',
+    'download-file',
+    'MyTicket | File'
+);
 
 
 

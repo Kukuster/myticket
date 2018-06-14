@@ -247,6 +247,9 @@ GROUP BY
     }
     
     
+    public function error(){
+        return mysqli_error($this->db);
+    }
     
     
     public function get_route_by_id($route_id){
@@ -503,6 +506,126 @@ WHERE
         
         return $rows;
     }
+    
+    
+    
+    
+    public function seat_is_available($r_id, $from_r_station_i, $to_r_station_i, $seat_i, $max_seat = NULL){
+        
+        if (!$max_seat){
+            $route = $this->get_route_part($r_id, $from_r_station_i, $to_r_station_i);
+            $v_id = $route[1]['v_id'];
+
+            $vehicle_seats = $this->get_vehicle_seats_by_vehicle_id($v_id);
+            
+            $max_seat = 0;
+            foreach ($vehicle_seats as $vehicle_seat){
+                if ($vehicle_seat['ms_seats_to'] > $max_seat){
+                    $max_seat = $vehicle_seat['ms_seats_to'];
+                }
+            }
+        }
+        
+        if ($seat_i > $max_seat){
+            //echo 'false because more than max_seat';
+            return false;
+        }
+        
+        $tickets_on_seat = $this->get_tickets_on_seat($r_id, $seat_i);
+        
+        
+        
+        foreach ($tickets_on_seat as $ticket){
+            
+            if (
+                ( $ticket['t_to_station_i'] > $from_r_station_i && $ticket['t_to_station_i'] <= $to_r_station_i ) ||
+                ( $ticket['t_from_station_i'] >= $from_r_station_i && $ticket['t_from_station_i'] < $to_r_station_i ) ||
+                ( $ticket['t_from_station_i'] < $from_r_station_i && $ticket['t_to_station_i'] >= $to_r_station_i )
+            ){
+                //echo 'false because seat is booked';
+                return false;
+            }
+            
+            
+            
+        }
+        
+        return true;
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    public function get_tickets_on_seat($r_id, $seat_i){
+        $sql = 'SELECT
+    *
+FROM
+    myticket_ticket
+WHERE
+    myticket_ticket.r_id = ' . $r_id . ' AND
+    myticket_ticket.t_seat_i = ' . $seat_i . '
+
+';
+        
+        $result = $this->do_sql_query($sql);
+        
+        $rows = array();
+        while($row = $result->fetch_assoc()){
+            $rows[] = $row;
+        }
+        
+        return $rows;
+        
+        
+    }
+    
+    
+    
+    
+    
+    public function add_ticket($r_id, $t_seat_i, $t_from_station_i, $t_to_station_i, $t_price, $t_purchase_time, $u_id){
+        $sql = 'INSERT INTO `myticket_ticket` (`t_id`, `r_id`, `t_seat_i`, `t_from_station_i`, `t_to_station_i`, `t_price`, `t_purchase_time`, `u_id`) VALUES
+  (NULL, "'.$r_id.'", "'.$t_seat_i.'", "'.$t_from_station_i.'", "'.$t_to_station_i.'", "'.$t_price.'", "'.$t_purchase_time.'", "'.$u_id.'");
+
+';
+        
+        $result = $this->do_sql_query($sql);
+        
+        return $result;
+        
+    }
+    
+    
+    
+    
+    
+    public function get_station_by_id($s_id){
+        $sql = 'SELECT
+    *
+FROM
+    myticket_station
+WHERE
+    myticket_station.s_id = '.$s_id.'
+';
+        
+        $result = $this->do_sql_query($sql);
+        
+        $rows = array();
+        while($row = $result->fetch_assoc()){
+            $rows[] = $row;
+        }
+        
+        return $rows[0];
+        
+    }
+    
+    
+    
 
 
 

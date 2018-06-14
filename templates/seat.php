@@ -10,14 +10,35 @@ if (  (isset($_GET['r_id']) && !empty($_GET['r_id'])) && (isset($_GET['from_r_st
 get_template_part('header');
 
 
-$route = myticket()->get_route_by_id($r_id);
-$v_id = $route[0]['v_id'];
+$route = myticket()->get_route_part($r_id, $from_r_station_i, $to_r_station_i);
+$v_id = $route[1]['v_id'];
+
+$base_price = 0;
+foreach ($route as $station){
+    $base_price += $station['r_price'];
+}
 
 $vehicle_seats = myticket()->get_vehicle_seats_by_vehicle_id($v_id);
 
 
 
+$max_seat = 0;
+foreach ($vehicle_seats as $vehicle_seat){
+    if ($vehicle_seat['ms_seats_to'] > $max_seat){
+        $max_seat = $vehicle_seat['ms_seats_to'];
+    }
+}
+
+
+
+
+
 ?>
+<style>
+    .train_plane a.seat.inactive{
+        background-color: #7f7f7f;
+    }
+</style>
 <section>
     <div class="train_plane">
         
@@ -36,7 +57,16 @@ $vehicle_seats = myticket()->get_vehicle_seats_by_vehicle_id($v_id);
                 </div>
                 <ul>
                     <?php for ($i=$last_seat+1; $i<=$vehicle_seat['ms_seats_to']; $i++){ ?>
-                        <li><i class="fa fa-ticket" aria-hidden="true"></i><a href="javascript:void(0)"><?php echo $i; ?></a></li>
+                        <li><i class="fa fa-ticket" aria-hidden="true"></i>
+                            <?php $available = myticket()->seat_is_available($r_id, $from_r_station_i, $to_r_station_i, $i, $max_seat); ?>
+                            <a  class="seat<?php echo ($available) ? '' : ' inactive' ; ?>"
+                                data-i="<?php echo $i; ?>" 
+                                data-tcname="<?php echo $vehicle_seat['tc_name']; ?>" 
+                                data-price="<?php echo $base_price*$vehicle_seat['ms_price_coef']; ?>" 
+                                href="javascript:void(0)">
+                                <?php echo $i; ?>
+                            </a>
+                        </li>
                     <?php } ?>
                     <?php $last_seat = $vehicle_seat['ms_seats_to']; ?>
                 </ul>
@@ -45,16 +75,23 @@ $vehicle_seats = myticket()->get_vehicle_seats_by_vehicle_id($v_id);
        
     </div>
     
-    <div>
-        <form id="choose_seat_form" action="<?php //echo $page->get_url(); ?>" class="choose_seat_form" method="get">
-            <input type="hidden" id="r_id" name="r_id" value="">
-            <input type="hidden" id="from_r_station_i" name="from_r_station_i" value="">
-            <input type="hidden" id="to_r_station_i" name="to_r_station_i" value="">
-            <input type="hidden" id="seat_n" name="seat_n" value="">
+    <?php 
+    $payment_page = get_page('payment');
+    $payment_url = $payment_page->get_url() . '?' . 'r_id='.$r_id . '&' . 'from_r_station_i='.$from_r_station_i . '&' . 'to_r_station_i='.$to_r_station_i . '&' . 'seat_i='.$seat_i;
+    $this_url = $page->get_url() . '?' . 'r_id='.$r_id . '&' . 'from_r_station_i='.$from_r_station_i . '&' . 'to_r_station_i='.$to_r_station_i;
+    ?>
+    
+    <div style="display:none;" class="choose_seat">
+        <form id="choose_seat_form" action="<?php echo $payment_url; ?>" class="choose_seat_form" method="get">
+            <input type="hidden" id="r_id" name="r_id" value="<?php echo $r_id; ?>">
+            <input type="hidden" id="from_r_station_i" name="from_r_station_i" value="<?php echo $from_r_station_i; ?>">
+            <input type="hidden" id="to_r_station_i" name="to_r_station_i" value="<?php echo $to_r_station_i; ?>">
+            <input type="hidden" id="seat_i" name="seat_i" value="">
+            <input type="hidden" id="redirect_on_success" name="redirect_on_success" value="<?php echo $this_url; ?>">
             
-            <p>Seat #: <span class="hint seat_n"></span></p>
-            <p>Seat class: <span class="hint seat_class"></span></p>
-            <p>Price: <span class="hint price"></span>₴</p>
+            <p>Seat #: <span class="hint seat_i"></span></p>
+            <p> <span class="hint seat_class"></span></p>
+            <p> $<span class="hint price"></span></p>
             
             <input type="submit" name="buy" class="buy" value="Buy">
             <input type="submit" name="reservation" class="reservation" value="Make a reservation">
