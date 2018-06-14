@@ -50,7 +50,7 @@ $seat_page = get_page('seat');
         <tr>
           <td><?php echo $class['tc_name']; ?></td>
           <td><?php echo $class['seats_available']; ?></td>
-          <td>$<?php echo $class['ms_price_coef'] * $price; ?></td>
+          <td><?php echo $class['ms_price_coef'] * $price; ?> ₴</td>
         </tr>
         <?php } ?>
         <?php $buy_url = $seat_page->get_url() . '?' . 'r_id='.$r_id . '&' . 'from_r_station_i='.$from_r_station_i . '&' . 'to_r_station_i='.$to_r_station_i; ?>
