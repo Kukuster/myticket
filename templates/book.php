@@ -23,7 +23,7 @@ get_template_part('header');
                     <div class="wrapper under">
                       <div class="col1">
                         <div class="row">
-                          <span class="left">From (city)</span>
+                          <span class="left"><?php echo $language_data['book']['From (city)']; ?></span>
                           <select name="from_city" class="">
                             <option value=""></option>
                             <?php foreach ($cities as $city){ ?>
@@ -32,7 +32,7 @@ get_template_part('header');
                           </select>
                         </div>
                         <div class="row">
-                          <span class="left">To (city)</span>
+                          <span class="left"><?php echo $language_data['book']['To (city)']; ?></span>
                           <select name="to_city" class="">
                             <option value=""></option>
                             <?php foreach ($cities as $city){ ?>
@@ -43,7 +43,7 @@ get_template_part('header');
                       </div>
                       <div class="col1">
                         <div class="row">
-                          <span class="left">From (station)</span>
+                          <span class="left"><?php echo $language_data['book']['From (station)']; ?></span>
                           <select name="from_station" class="">
                             <option value=""></option>
                             <?php foreach ($city_stations as $city_station){ ?>
@@ -52,7 +52,7 @@ get_template_part('header');
                           </select>
                         </div>
                         <div class="row">
-                          <span class="left">To (station)</span>
+                          <span class="left"><?php echo $language_data['book']['To (station)']; ?></span>
                           <select name="to_station" class="">
                             <option value=""></option>
                             <?php foreach ($city_stations as $city_station){ ?>
@@ -63,9 +63,9 @@ get_template_part('header');
                       </div>
                     </div>
                     <div class="wrapper under">
-                      <span class="left"><?php echo $page->get_page_setting('filter_title'); ?></span>
+                      <span class="left"><?php echo $language_data['book'][$page->get_page_setting('filter_title')]; ?></span>
                       <div class="cols marg_right1">
-                        <h6><?php echo $page->get_page_setting('filter_subtitle'); ?></h6>
+                        <h6><?php echo $language_data['book'][$page->get_page_setting('filter_subtitle')]; ?></h6>
                         <div class="calendar" style="padding-top: 5px">
                           <p>Date: <input type="text" id="datepicker2"></p>
                         </div>
@@ -73,22 +73,22 @@ get_template_part('header');
                     </div>
                     <div class="wrapper under">
                         <div class="cols marg_right1">
-                            <h6>Minimum and Maximum price</h6>
+                            <h6><?php echo $language_data['book']['Minimum and Maximum price']; ?></h6>
                             <div class="row">
-                              <span class="left">Minimum</span>
+                              <span class="left"><?php echo $language_data['book']['Minimum']; ?></span>
                               <input name="price_min" type="text" class="input">
                             </div>
                             <div class="row">
-                              <span class="left">Maximum</span>
+                              <span class="left"><?php echo $language_data['book']['Maximum']; ?></span>
                               <input name="price_max" type="text" class="input">
                             </div>
                         </div>
                     </div>
                     <div class="wrapper pad_bot1">
-                      <span style="display:none;" class="left">Passengers</span>
+                      <span style="display:none;" class="left"><?php echo $language_data['book']['Passengers']; ?></span>
                       <span class="right relative">
                         <p href="#" class="button1">
-                          <input type="submit" value="Search">
+                          <input type="submit" value="<?php echo $language_data['book']['Search']; ?>">
                         </p>
                       </span>
                     </div>
@@ -265,7 +265,7 @@ foreach ($routes as $route){
 
 
 if (!$output_n){
-    ?><h3>We are sorry, there is no route that satisfy your requirements</h3><?php
+    ?><h3><?php echo $language_data['book']['We are sorry, there is no route that satisfy your requirements']; ?></h3><?php
 }
 
 

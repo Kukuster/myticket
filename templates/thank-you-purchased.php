@@ -23,9 +23,9 @@ $filename = $_POST['filename'];
 </head>
 <body>
 
-<h1>Thank you for using our service!</h1>
+<h1><?php echo $language_data['seat']['Thank you for using our service!']; ?></h1>
 
-<h2>Buy more tickets!!!</h2>
+<h2><?php echo $language_data['seat']['Buy more tickets!!!']; ?></h2>
 
 
 <script>

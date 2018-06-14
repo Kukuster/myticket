@@ -103,12 +103,12 @@ foreach ($vehicle_seats as $vehicle_seat){
             <input type="hidden" id="seat_i" name="seat_i" value="">
             <input type="hidden" id="redirect_on_success" name="redirect_on_success" value="<?php echo $this_url; ?>">
             
-            <p>Seat #: <span class="hint seat_i"></span></p>
+            <p><?php echo $language_data['seat']['Seat #:']; ?> <span class="hint seat_i"></span></p>
             <p> <span class="hint seat_class"></span></p>
             <p> <span class="hint price"></span> ₴</p>
             
-            <input type="submit" name="buy" class="buy" value="Buy" style="margin-bottom: 12px; border-radius: 5px;">
-            <input type="submit" name="reservation" class="reservation" value="Make a reservation">
+            <input type="submit" name="buy" class="buy" value="<?php echo $language_data['seat']['Buy']; ?>" style="margin-bottom: 12px; border-radius: 5px;">
+            <input type="submit" name="reservation" class="reservation" value="<?php echo $language_data['seat']['Make a reservation']; ?>">
             
         </form>
     </div>

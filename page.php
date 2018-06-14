@@ -101,8 +101,10 @@ class page
     
     
     public function load_page(){
+        global $language_data;
         get_template($this->page_template, array(
             'page'=>$this,
+            'language_data'=>$language_data,
         ));
     }
     

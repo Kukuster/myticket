@@ -4,7 +4,7 @@ require_once 'functions.php';
 require_once 'config.php';
 
 
-//debug($_SERVER);
+//debug($_SERVER); die();
 /*
 http status:
 $_SERVER['REDIRECT_STATUS']
@@ -36,6 +36,15 @@ if (isset($_SERVER['REQUEST_SCHEME']) && !empty($_SERVER['REQUEST_SCHEME']) && i
 include_once 'libs/fpdf181/fpdf.php';
 
 
+
+
+
+
+
+//// load language
+global $language_data;
+$language = (isset($_COOKIE['language']) && !empty($_COOKIE['language'])) ? $_COOKIE['language'] : 'en';
+require 'language/'.$language.'.php';
 
 
 
@@ -127,6 +136,10 @@ add_page(10, 'download-file', 'download-file',
     'download-file',
     'MyTicket | File'
 );
+
+
+
+
 
 
 

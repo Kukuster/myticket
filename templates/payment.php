@@ -96,25 +96,25 @@ $redirect_url = $_GET['redirect_on_success'];
                 <input type="hidden" id="redirect_on_success" name="redirect_on_success" value="<?php echo $redirect_url; ?>">
                 
 				<div class="form-group">
-					<label for="number" class="col-sm-4 control-label">Card Number</label>
+					<label for="number" class="col-sm-4 control-label"><?php echo $language_data['payment']['Card Number']; ?></label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="number" placeholder="Card Number" name="number">
+						<input type="text" class="form-control" id="number" placeholder="<?php echo $language_data['payment']['Card Number']; ?>" name="number">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-4 control-label">Full Name</label>
+					<label for="name" class="col-sm-4 control-label"><?php echo $language_data['payment']['Full Name']; ?></label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="name" placeholder="Full Name" name="name">
+						<input type="text" class="form-control" id="name" placeholder="<?php echo $language_data['payment']['Full Name']; ?>" name="name">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-4 control-label">Passport ID</label>
+					<label for="name" class="col-sm-4 control-label"><?php echo $language_data['payment']['Passport ID']; ?></label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="passpoptId" placeholder="Full Name" name="passport">
+						<input type="text" class="form-control" id="passpoptId" placeholder="<?php echo $language_data['payment']['Passport ID']; ?>" name="passport">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="month" class="col-sm-4 control-label">Month and Year</label>
+					<label for="month" class="col-sm-4 control-label"><?php echo $language_data['payment']['Expiry date']; ?></label>
 					<div class="col-sm-8">
 						<select name="Month" id="idMonth" class="col-sm-4 control-label">
                             <?php for ($i=1; $i<=12; $i++) { ?>
@@ -129,13 +129,13 @@ $redirect_url = $_GET['redirect_on_success'];
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="cvc" class="col-sm-4 control-label">CVC</label>
+					<label for="cvc" class="col-sm-4 control-label"><?php echo $language_data['payment']['CVC']; ?></label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="cvc" placeholder="CVC" name="cvc">
+						<input type="text" class="form-control" id="cvc" placeholder="<?php echo $language_data['payment']['CVC']; ?>" name="cvc">
 					</div>
 				</div>
 				<div class="form-group" style="float: right;margin-right: 2px">
-                    <input type="submit" name="buy" class="btn btn-success" value="Pay now">
+                    <input type="submit" name="buy" class="btn btn-success" value="<?php echo $language_data['payment']['Submit']; ?>">
 				</div>
 			</form>
 		</div>

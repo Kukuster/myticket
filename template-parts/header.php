@@ -1,4 +1,5 @@
 <?php
+global $language_data;
 $template = $page->get_page_template();
 
 
@@ -41,20 +42,21 @@ switch ($template){
 }
 ?>
 <body id="<?php echo $body_id; ?>">
+<?php  ?>
 <div class="main">
   <!--header -->
   <header>
     <div class="wrapper">
       <h1><a href="<?php echo $home_page->get_url(); ?>" id="logo">AirLines</a></h1>
-      <span id="slogan">Fast, Frequent &amp; Safe Flights</span>
+      <span id="slogan"><?php echo $language_data['header']['Fast, Frequent &amp; Safe Flights']; ?></span>
       <nav id="top_nav">
         <ul style="display: flex; flex-direction: row">
-          <li><a href="<?php echo $home_page->get_url(); ?>" class="nav1">Home</a></li>
-          <li><a href="<?php echo $contacts_page->get_url(); ?>" class="nav3">Contact</a></li>
-          <li><a href="<?php echo $login_page->get_url(); ?>" class="nav2">Вход/Регистр</a></li>
+          <li><a href="<?php echo $home_page->get_url(); ?>" class="nav1"><?php echo $language_data['header']['Home']; ?></a></li>
+          <li><a href="<?php echo $contacts_page->get_url(); ?>" class="nav3"><?php echo $language_data['header']['Contact']; ?></a></li>
+          <li><a href="<?php echo $login_page->get_url(); ?>" class="nav2"><?php echo $language_data['header']['Login/Register']; ?></a></li>
           <div class="lang">
-            <a href="#">рус</a> /
-            <a href="#">eng</a>
+            <a href="javascript:void(0);" class="language-change" data-lang="ru">рус</a> /
+            <a href="javascript:void(0);" class="language-change" data-lang="en">eng</a>
           </div>
         </ul>
 

@@ -1,4 +1,5 @@
 <?php
+global $language_data;
 $template = $page->get_page_template();
 
 ?>
@@ -10,7 +11,7 @@ $template = $page->get_page_template();
         <li><a href="javascript:void(0)" class="normaltip"><img src="../inc/images/icon4.jpg" alt=""></a></li>
         <li><a href="javascript:void(0)" class="normaltip"><img src="../inc/images/icon5.jpg" alt=""></a></li>
       </ul>
-      <div class="links">Copyright 2018 &copy; <a href="#">Web Site</a> All Rights Reserved<br></div>
+      <div class="links">Copyright 2018 &copy; <a href="#">Web Site</a> <?php echo $language_data['footer']['All Rights Reserved']; ?><br></div>
     </div>
   </footer>
   <!--footer end-->
@@ -70,6 +71,23 @@ $(document).ready(function () {
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+
+<script>
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+$lang_change = jQuery('a.language-change');
+$lang_change.on('click',function(e){
+    //e.preventDefault();
+    setCookie('language', jQuery(this).attr('data-lang'), 20);
+    window.location.reload(true);
+});
+
+</script>
 
 <?php if ($template=='seat'){ ?>
 <script type="text/javascript" src="../inc/js/seat.js"></script>
