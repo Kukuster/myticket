@@ -23,9 +23,12 @@ foreach ($route as $station){
 
 $vehicle_seats = myticket()->get_vehicle_seats_by_vehicle_id($v_id);
 
+$travel_class = '';
+
 foreach ($vehicle_seats as $vehicle_seat){
     if ($seat_i < $vehicle_seat['ms_seats_to']){
         $price = $base_price*$vehicle_seat['ms_price_coef'];
+        $travel_class = $vehicle_seat['tc_name'];
         break;
     }
 }
@@ -49,7 +52,9 @@ $filename = '';
 if (myticket()->seat_is_available($r_id, $from_r_station_i, $to_r_station_i, $seat_i)){
     myticket()->add_ticket($r_id, $seat_i, $from_r_station_i, $to_r_station_i, $price, $purchase_time, $u_id) or die(myticket()->error());
     
-    $pdf_text = 'Route: ' . get_route_output_id($r_id) . '  -  '.$route[$from_r_station_i]['s_name'].' => '.$route[$to_r_station_i]['s_name'].' ( '.get_vehicle_output_id($v_id).' )'."\n".
+    $pdf_text = 'Route: ' . get_route_output_id($r_id) . '  -  '.$route[$from_r_station_i]['s_name'].' => '.$route[$to_r_station_i]['s_name'].' ( '.$route[1]['m_name'].' '.get_vehicle_output_id($v_id).' )'."\n".
+    'Seat #' . $seat_i . ' (' . $travel_class . ')' ."\n".
+    "\n".
     'Date and time: ' . $purchase_time."\n".
     'Price: ' . $price . ' UAH'."\n".
     'Bank card: ' . $_POST['number']."\n".
