@@ -5,6 +5,11 @@
 $seat_page = get_page('seat');
 
  ?>
+<style>
+.left_inform ul{
+    padding-top: 70px;
+}
+</style>
 <!--bilet-->
 <div class="bilet_train">
   <div class="left_section">

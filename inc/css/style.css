@@ -69,7 +69,8 @@ body {
 a:not(.bilet_train) {
 	color: #b9c3c2;
 	text-decoration:underline;
-	outline:none
+	outline:none;
+	padding-left: 4px;
 }
 a:hover {
 	text-decoration:none
@@ -1637,5 +1638,10 @@ xsigin/signup popup
 	font-size: 18px;
 	float: left;
 	padding-top: 10px;
+}
+#choose_seat_form{
+	margin-left: 18px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 

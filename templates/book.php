@@ -96,7 +96,6 @@ get_template_part('header');
                 </div>
               </form>
             </div>
-            
           </div>
         </div>
       </article>

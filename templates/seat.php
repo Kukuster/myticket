@@ -52,10 +52,24 @@ foreach ($vehicle_seats as $vehicle_seat){
             <?php } ?>
             
             <div class="class_business">
-                <div class="business_nam">
+                <div class="business_nam" style="border: 1px solid #000;">
                     <h1><?php echo $vehicle_seat['tc_name']; ?></h1>
                 </div>
-                <ul>
+                <ul style="
+                        column-count: 2;
+                        list-style-type: decimal;
+                        height: 70px;
+                        width: 750px;
+                        display: flex;
+                        flex-direction: row;
+                        padding-top: 27px;
+                        padding-left: 21px;
+                        margin-bottom: 10px;
+                        overflow-x: auto;
+                        padding-bottom: 23px;
+                        list-style-position: inside;
+                        -moz-column-count: 2; /* Firefox */
+                        -webkit-column-count: 2;">
                     <?php for ($i=$last_seat+1; $i<=$vehicle_seat['ms_seats_to']; $i++){ ?>
                         <li><i class="fa fa-ticket" aria-hidden="true"></i>
                             <?php $available = myticket()->seat_is_available($r_id, $from_r_station_i, $to_r_station_i, $i, $max_seat); ?>
@@ -81,7 +95,7 @@ foreach ($vehicle_seats as $vehicle_seat){
     $this_url = $page->get_url() . '?' . 'r_id='.$r_id . '&' . 'from_r_station_i='.$from_r_station_i . '&' . 'to_r_station_i='.$to_r_station_i;
     ?>
     
-    <div style="display:none;" class="choose_seat">
+    <div style="display:none;border: 1px solid #000000 " class="choose_seat">
         <form id="choose_seat_form" action="<?php echo $payment_url; ?>" class="choose_seat_form" method="get">
             <input type="hidden" id="r_id" name="r_id" value="<?php echo $r_id; ?>">
             <input type="hidden" id="from_r_station_i" name="from_r_station_i" value="<?php echo $from_r_station_i; ?>">
@@ -93,7 +107,7 @@ foreach ($vehicle_seats as $vehicle_seat){
             <p> <span class="hint seat_class"></span></p>
             <p> <span class="hint price"></span> ₴</p>
             
-            <input type="submit" name="buy" class="buy" value="Buy">
+            <input type="submit" name="buy" class="buy" value="Buy" style="margin-bottom: 12px; border-radius: 5px;">
             <input type="submit" name="reservation" class="reservation" value="Make a reservation">
             
         </form>
