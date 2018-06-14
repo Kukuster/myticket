@@ -91,7 +91,7 @@ foreach ($vehicle_seats as $vehicle_seat){
             
             <p>Seat #: <span class="hint seat_i"></span></p>
             <p> <span class="hint seat_class"></span></p>
-            <p> $<span class="hint price"></span></p>
+            <p> <span class="hint price"></span> ₴</p>
             
             <input type="submit" name="buy" class="buy" value="Buy">
             <input type="submit" name="reservation" class="reservation" value="Make a reservation">
