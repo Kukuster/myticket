@@ -66,7 +66,7 @@ $distance_between_stations = (($svg_width - ($dots_margin*2)) / ($route_total_st
 
 <style>
     .train_plane a.seat.inactive{
-        background-color: #7f7f7f;
+        background-color: #bfbfbf;
     }
     
     .kukh2 {
@@ -107,11 +107,11 @@ $distance_between_stations = (($svg_width - ($dots_margin*2)) / ($route_total_st
         r: 12;
     }
     svg.route > .station.inactive {
-        fill: #7f7f7f;
+        fill: #bfbfbf;
         r: 10;
     }
     svg.route > .station.inactive:hover {
-        fill: #7f7fbf;
+        fill: #bfbfff;
         r: 12;
     }
     
@@ -120,7 +120,7 @@ $distance_between_stations = (($svg_width - ($dots_margin*2)) / ($route_total_st
     }
     
     svg.route > .path.inactive {
-        stroke: #7f7f7f;
+        stroke: #bfbfbf;
     }
     
     
@@ -138,7 +138,7 @@ $distance_between_stations = (($svg_width - ($dots_margin*2)) / ($route_total_st
     }
     
     .station_captions.inactive {
-        color: #7f7f7f;
+        color: #bfbfbf;
     }
     
     
