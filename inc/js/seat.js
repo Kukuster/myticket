@@ -27,6 +27,18 @@
                 $form_wrapper.css('display','block');
                 
             });
+            
+            
+            
+            
+            var $Stations = $("svg.route > .station");
+            
+            $Stations.on("click", function() {
+                
+            });
+            
+            
+            
         },
         winLoad: function(){
 

@@ -286,7 +286,7 @@ WHERE
         
         $rows = array();
         while($row = $result->fetch_assoc()){
-            $rows[] = $row;
+            $rows[$row['r_station_i']] = $row;
         }
         
         return $rows;

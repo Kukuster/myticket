@@ -10,11 +10,12 @@ if (  (isset($_GET['r_id']) && !empty($_GET['r_id'])) && (isset($_GET['from_r_st
 get_template_part('header');
 
 
-$route = myticket()->get_route_part($r_id, $from_r_station_i, $to_r_station_i);
-$v_id = $route[1]['v_id'];
+$route = myticket()->get_route_by_id($r_id);
+$route_part = myticket()->get_route_part($r_id, $from_r_station_i, $to_r_station_i);
+$v_id = $route_part[1]['v_id'];
 
 $base_price = 0;
-foreach ($route as $station){
+foreach ($route_part as $station){
     $base_price += $station['r_price'];
 }
 
@@ -33,12 +34,161 @@ foreach ($vehicle_seats as $vehicle_seat){
 
 
 
-?>
+$route_total_stations = count($route);
+
+
+
+$dots_margin = 30;
+
+$svg_height=40;
+
+/*
+>7 - 750
+7   - 750
+6   - 700
+5   - 650
+4   - 600
+3   - 550
+2   - 500
+*/
+$svg_width=0;
+if ($route_total_stations < 7){
+    $svg_width = 400 + $route_total_stations*50;
+} else {
+    $svg_width = 750;
+}
+
+
+$distance_between_stations = (($svg_width - ($dots_margin*2)) / ($route_total_stations-1));
+
+
+ ?>
+
 <style>
     .train_plane a.seat.inactive{
         background-color: #7f7f7f;
     }
+    
+    .kukh2 {
+        display: block;
+        font-size: 1.5em;
+        margin-top: 0.83em;
+        margin-bottom: 0.83em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+    }
+    
+    .route_graph_wrapper {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    
+    .route_graph {
+        margin: auto;
+        width: 80%;
+    }
+    
+    .station-dot-wrapper {
+        
+    }
+    
+    svg.route {
+        display: block;
+        margin: auto;
+    }
+    
+    svg.route > .station {
+        fill: #000000;
+        r: 10;
+    }
+    svg.route > .station:hover {
+        fill: #00003f;
+        r: 12;
+    }
+    svg.route > .station.inactive {
+        fill: #7f7f7f;
+        r: 10;
+    }
+    svg.route > .station.inactive:hover {
+        fill: #7f7fbf;
+        r: 12;
+    }
+    
+    svg.route > .path {
+        stroke: #000000;
+    }
+    
+    svg.route > .path.inactive {
+        stroke: #7f7f7f;
+    }
+    
+    
+    
+    .route_captions {
+        margin: auto;
+        display: table;
+        table-layout: fixed;
+        width: <?php echo (($distance_between_stations*$route_total_stations)); ?>px;
+    }
+    
+    .station_captions {
+        display: table-cell;
+        text-align: center; 
+    }
+    
+    .station_captions.inactive {
+        color: #7f7f7f;
+    }
+    
+    
 </style>
+
+
+<section>
+    <div class="train_plane route_graph_wrapper">
+        
+        <div class="route_graph">
+            <div class="station-dot-wrapper">
+                <svg class="route" width="<?php echo $svg_width; ?>" height="<?php echo $svg_height; ?>">
+                  <?php foreach ($route as $station_i=>$station){ ?>
+                  <?php if ($station_i == $route_total_stations){ break; } ?>
+                  <line x1="<?php echo $dots_margin + ($distance_between_stations*($station_i-1)); ?>" y1="<?php echo $svg_height/2; ?>" 
+                        x2="<?php echo $dots_margin + ($distance_between_stations*($station_i)); ?>" y2="<?php echo $svg_height/2; ?>" 
+                        stroke="#000000"
+                        style="stroke-width:3"
+                        class="path <?php if ($station_i<$from_r_station_i || $station_i>=$to_r_station_i){ echo 'inactive'; } ?>" />
+                  <?php } ?>
+                  
+                  <?php foreach ($route as $station_i=>$station){ ?>
+                    <?php
+                    if (false){
+                    $link_from_r_station_i = '';
+                    $buy_url = $seat_page->get_url() . '?' . 'r_id='.$r_id . '&' . 'from_r_station_i='.$from_r_station_i . '&' . 'to_r_station_i='.$to_r_station_i;
+                    }
+                    ?>
+                    <circle data-href=""
+                            cx="<?php echo $dots_margin + ($distance_between_stations*($station_i-1)); ?>" cy="<?php echo $svg_height/2; ?>" r="10"
+                            class="station <?php if ($station_i<$from_r_station_i || $station_i>$to_r_station_i){ echo 'inactive'; } ?>" />
+                  <?php } ?>
+                 
+                </svg>
+            </div>
+            <div class="route_captions">
+                <?php foreach ($route as $station_i=>$station){ ?>
+                <p class="station_captions <?php if ($station_i<$from_r_station_i || $station_i>$to_r_station_i){ echo 'inactive'; } ?>">
+                    <?php echo $station['s_name']; ?>
+                </p>
+                <?php } ?>
+            </div>
+        </div>
+
+
+        
+    </div>
+</section>
+
+
 <section>
     <div class="train_plane">
         
@@ -114,5 +264,8 @@ foreach ($vehicle_seats as $vehicle_seat){
     </div>
     
 </section>
+
+
+
 <?php 
 get_template_part('footer');
