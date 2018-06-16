@@ -235,8 +235,10 @@ $distance_between_stations = (($svg_width - ($dots_margin*2)) / ($route_total_st
                     <?php $last_seat = $vehicle_seat['ms_seats_to']; ?>
                 </ul>
             </div>
+            <img src="../inc/images/hunda1.png" alt=""style="padding-left: 166px;">
+
         <?php } /// endforeach ?>
-       
+
     </div>
     
     <?php 
